@@ -1,31 +1,17 @@
 class UI {
-  setWeather(location) {
-    const container = document.querySelector(".weatherContainer");
-
-    container.innerHTML = `
-     <div class="row mt-5">
-        <div class="col-md-6 mx-auto p-5 text-center bg-primary">
-          <h1>${location.name}, ${location.sys.country}</h1>
-          <h3 class="text-dark">${location.weather[0].description}</h3>
-          <h3 id="temp">79.8 F (26.6 C)</h3>
-          <img src="" class="img-fluid" id="icon" />
-          <ul class="list-group">
-            <li id="humidity" class="list-group-item"></li>
-            <li id="high" class="list-group-item"></li>
-            <li id="low" class="list-group-item"></li>
-            <li id="pressure" class="list-group-item"></li>
-          </ul>
-          <hr />
-          <button
-            class="btn btn-primary"
-            data-toggle="modal"
-            data-target="#changeLocation"
-          >
-            Change Location
-          </button>
-        </div>
-      </div>
-     `;
-    console.log(location);
+  paintUI(weather) {
+    document.getElementById('w-loc').textContent = weather.name;
+    document.getElementById('w-desc').textContent =
+      weather.weather[0].description;
+    document.getElementById('w-temp').textContent = (
+      ((weather.main.temp - 273.15) * 9) / 5 +
+      32
+    ).toFixed(2);
+    document
+      .getElementById('w-icon')
+      .setAttribute(
+        'src',
+        `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`
+      );
   }
 }
