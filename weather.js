@@ -2,7 +2,7 @@ class Weather {
   constructor(city, country) {
     (this.city = city),
       (this.country = country),
-      (this.apiKey = 'a1342946053b6207ecd09b56db1d70cf');
+      (this.apiKey = "a1342946053b6207ecd09b56db1d70cf");
   }
 
   async getWeather() {
@@ -15,5 +15,10 @@ class Weather {
     const responseWeather = await requestWeather.json();
 
     return responseWeather;
+  }
+
+  changeLocation(city, country) {
+    this.city = city;
+    this.country = country;
   }
 }
